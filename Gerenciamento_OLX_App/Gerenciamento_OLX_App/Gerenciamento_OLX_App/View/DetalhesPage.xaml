@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Gerenciamento_OLX_App.View.DetalhesPage">
+
+    <ContentPage.Content>
+        <Grid Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>       
+                <ColumnDefinition Width="*"/>       
+                <ColumnDefinition Width="*"/>       
+            </Grid.ColumnDefinitions>
+            
+            <Label Text="Detalhes"
+                   FontSize="35"
+                   TextColor="#6e2cd6"
+                   HorizontalOptions="CenterAndExpand" 
+                   Grid.Row="0"                  
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3"/>
+            
+            <Label Text="CC: 1"
+                   Grid.Row="1" 
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"/>
+            
+             <Label Text="Nome: 1"
+                   Grid.Row="2"                  
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"/>
+            
+             <Label Text="Data Da Compra: 1"
+                   Grid.Row="3"                  
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"/>
+            
+             <Label Text="Preço Compra: 1"
+                   Grid.Row="4"                  
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"/>
+            
+             <Label Text="Valor Investido: 1"
+                   Grid.Row="5"                  
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"/>
+            
+             <Label Text="Preço Custo: 1"
+                   Grid.Row="6"                  
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"/>
+            
+             <Label Text="CC: 1"
+                   Grid.Row="7"                  
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"/>
+            
+             <Label Text="CC: 1"
+                   Grid.Row="8"                  
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"/>
+            
+             <Label Text="CC: 1"
+                   Grid.Row="9"                  
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"/>
+            
+             <Label Text="CC: 1"
+                   Grid.Row="10"                  
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"/>
+            
+            
+            
+        </Grid>
+        
+    </ContentPage.Content>
+</ContentPage>

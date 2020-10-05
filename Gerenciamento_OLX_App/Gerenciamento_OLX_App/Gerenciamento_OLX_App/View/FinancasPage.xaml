@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:Gerenciamento_OLX_App.ViewModel.TabsFinacas"
+             xmlns:localajust="clr-namespace:Gerenciamento_OLX_App.View.TabsFinacas"
+             mc:Ignorable="d" 
+             BarBackgroundColor="Transparent"
+             BarTextColor="#6e2cd6"
+             x:Class="Gerenciamento_OLX_App.View.FinancasPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Adcionar" IconImageSource="estoque" Command="{Binding GoEstoqueCommand}"></ToolbarItem>
+        <ToolbarItem Text="Atualizar" IconImageSource="chat" Command="{Binding GoChatCommand}"></ToolbarItem>
+
+    </ContentPage.ToolbarItems>
+
+    <local:LucroPage Title="Lucro"/>
+    <localajust:InvestidoPage Title="Investido"/>
+    <localajust:CapitalGiroPage Title="Capita Giro"/>
+
+</TabbedPage>

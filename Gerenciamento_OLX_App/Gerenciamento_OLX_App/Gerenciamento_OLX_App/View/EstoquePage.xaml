@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:b="clr-namespace:Gerenciamento_OLX_App.ViewModel.Behaviors_Estoque"
+             xmlns:i="clr-namespace:Gerenciamento_OLX_App.ViewModel"
+             xmlns:bv="clr-namespace:Gerenciamento_OLX_App.ViewModel.Behaviors_Estoque"
+             mc:Ignorable="d"             
+             BarBackgroundColor="Transparent"
+             SelectedTabColor="Gray"             
+             BarTextColor="#6e2cd6"             
+             x:Class="Gerenciamento_OLX_App.View.EstoquePage">
+
+    
+    <ContentPage Title="Em Estoque"  BackgroundImageSource="backestoque">
+            <ContentPage.ToolbarItems>
+                <ToolbarItem Text="Adcionar" IconImageSource="adcionar" Command="{Binding AdcionarCommand}"></ToolbarItem>
+                <ToolbarItem Text="Atualizar" IconImageSource="chat" Command="{Binding GoChatCommand}"></ToolbarItem>  
+                
+            </ContentPage.ToolbarItems>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <BoxView 
+                    Grid.Row="0"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Center"
+                    HeightRequest="1"
+                    WidthRequest="800"  
+                    Color="#dedede">                    
+                </BoxView>
+
+            <SearchBar Text="{Binding Pesquisar}" VerticalOptions="Center" Placeholder="Search" Grid.Row="0" Margin="0,5,0,0">
+                <SearchBar.Behaviors>
+                    <bv:PesquisarBehavior />
+                </SearchBar.Behaviors>
+            </SearchBar>
+
+            <ListView HasUnevenRows="True" 
+                      ItemsSource="{Binding Produtos}" 
+                      IsRefreshing="True"
+                      IsPullToRefreshEnabled="True"
+                      RefreshCommand="{Binding RefreshedCommand}"
+                      Grid.Row="1" 
+                      ItemSelected="ListView_ItemSelected" 
+                      Scrolled="ListView_ItemSelected">
+                <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+
+                                <Grid Margin="0, 5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="22"/>
+                                        <RowDefinition Height="22"/>
+                                        <RowDefinition Height="22"/>
+                                        <RowDefinition Height="22"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="70"/>
+                                    </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding Estado}" 
+                                       FontSize="12" 
+                                       TextColor="Green"
+                                       Grid.Row="0"
+                                       Grid.RowSpan="4"
+                                       Grid.Column="0"
+                                       VerticalTextAlignment="Start"
+                                       HorizontalTextAlignment="Center">
+                                </Label>
+
+                                <Label Text="{Binding Name}"
+                                   Grid.Row="0"
+                                   Grid.RowSpan="4"
+                                   Grid.Column="0"                               
+                                   FontSize="20"
+                                   TextColor="#6e2cd6"
+                                   FontAttributes="Bold"
+                                   HeightRequest="150" 
+                                   WidthRequest="150" 
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"/>
+
+                                <Label Text="{Binding ProdutoId, StringFormat='CC: {0}'}" 
+                                       FontSize="10" 
+                                       TextColor="Blue"
+                                       Grid.Row="0"
+                                       Grid.RowSpan="4"
+                                       Grid.Column="0"
+                                       VerticalTextAlignment="End"
+                                       HorizontalTextAlignment="Center"/>
+
+                                <Label Text="{Binding PrecoCompra, StringFormat='Custo R$ {0:0,0}'}"
+                                   HorizontalTextAlignment="Center"
+                                       FontSize="15"
+                                       TextColor="Black"
+                                   Grid.Row="0"
+                                   Grid.Column="1" />
+
+                                <Label Text="{Binding ValorInvestido, StringFormat='Investido R$ {0:0,0}'}"
+                                   HorizontalTextAlignment="Center"
+                                         FontSize="15"
+                                       TextColor="Black"
+                                    Grid.Row="1"
+                                   Grid.Column="1" />
+
+                                <Label Text="{Binding MetaVenda, StringFormat='Meta R$ {0:0,0}'}"
+                                   HorizontalTextAlignment="Center"
+                                         FontSize="15"
+                                       TextColor="Black"
+                                   Grid.Row="2"
+                                   Grid.Column="1" />
+
+                                <Label Text="{Binding LucroPrevisto, StringFormat='Lucro {0:F2}%'}" 
+                                   HorizontalTextAlignment="Center"
+                                   Grid.Row="3"
+                                   Grid.Column="1"
+                                       TextColor="Green">
+           
+                                    
+                                </Label>
+
+
+                                <ImageButton Source="options"
+                                                 ClassId="{Binding ProdutoId}"
+                                                 x:Name="botao"
+                                                 Padding="5"
+                                                 Grid.Row="0"  
+                                                 Clicked="ImageButton_Clicked"
+                                                 Grid.Column="2" 
+                                                 Grid.RowSpan="3"
+                                                 BackgroundColor="Transparent" 
+                                                 Margin="10,5, 0, 0" 
+                                                 VerticalOptions="Start" 
+                                                 HeightRequest="35">                                                                     
+                                    
+                                                                    
+                                </ImageButton >
+                              
+                            </Grid>
+
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                
+                </ListView>
+
+            <StackLayout x:Name="OptionsVisible"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Padding="20"
+                        BackgroundColor="#ffffff"
+                        >
+                <Label Text="Editar" 
+                       ClassId="{Binding IdProduto}"
+                       HorizontalTextAlignment="Center" 
+                       FontSize="18" TextColor="#6e2cd6" 
+                       >
+
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding EditarCommand}" CommandParameter="{Binding .}"/>
+                    </Label.GestureRecognizers>
+
+                </Label>
+                <Label Text="Deletar" 
+                       ClassId="{Binding IdProduto}"
+                       HorizontalTextAlignment="Center" 
+                       FontSize="18" TextColor="#6e2cd6"
+                        >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DeletarCommand}" CommandParameter="{Binding .}"/>
+                    </Label.GestureRecognizers>
+
+                </Label>
+                <Label Text="Vendido" 
+                       ClassId="{Binding IdProduto}"
+                       HorizontalTextAlignment="Center" 
+                       FontSize="18" TextColor="#6e2cd6"
+                       Padding="0,0,0,5"
+                       >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding VendidoCommand}" CommandParameter="{Binding .}"/>
+                    </Label.GestureRecognizers>
+
+                </Label>
+                <Label Text="Detalhes" 
+                       ClassId="{Binding IdProduto}"
+                       HorizontalTextAlignment="Center" 
+                       FontSize="18" TextColor="#6e2cd6"
+                       Padding="0,0,0,5"
+                       >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DetalhesCommand}" CommandParameter="{Binding .}"/>
+                    </Label.GestureRecognizers>
+
+                </Label>
+                
+                
+
+
+            </StackLayout>
+
+            <StackLayout x:Name="OptionVendido"
+                        Grid.Row="0"
+                        IsVisible="False"
+                        Grid.RowSpan="2"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Padding="20"
+                        BackgroundColor="#ffffff"
+                        >
+                
+                <Label Text="Informe o valor da Venda" 
+                       HorizontalTextAlignment="Center" 
+                       FontSize="18" TextColor="#6e2cd6" 
+                       >
+
+                </Label>
+
+                <Entry Text="{Binding ValorVendido, Mode=TwoWay}"
+                       Keyboard="Numeric"
+                       Placeholder="Valor da Venda" />
+
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="End">
+                    
+                    <Label Text="OK" 
+                           ClassId="{Binding IdProduto}"
+                           HorizontalTextAlignment="Center" 
+                           Padding="5"
+                           FontSize="14" TextColor="#6e2cd6"
+                        >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OkCommand}" CommandParameter="{Binding .}"/>
+                        </Label.GestureRecognizers>
+
+                    </Label>
+
+                    <Label Text="Cancelar" 
+                           Padding="5"
+                           HorizontalTextAlignment="Center" 
+                           FontSize="14" TextColor="#6e2cd6"
+                       
+                       >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding CancelarCommand}"/>
+                        </Label.GestureRecognizers>
+
+                    </Label>
+
+
+                </StackLayout>
+
+            </StackLayout>
+
+        </Grid>
+     </ContentPage>
+        
+</TabbedPage>

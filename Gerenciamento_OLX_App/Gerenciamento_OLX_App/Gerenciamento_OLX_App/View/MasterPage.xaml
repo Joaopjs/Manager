@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:Gerenciamento_OLX_App.View"
+             mc:Ignorable="d"
+             x:Class="Gerenciamento_OLX_App.View.MasterPage">
+
+    <MasterDetailPage.Master>
+        <ContentPage Title="Administração">          
+                        
+            <StackLayout>
+                <Grid BackgroundColor="#6e2cd6" HeightRequest="251" HorizontalOptions="FillAndExpand">
+                    <Image Source="propaganda.png" Aspect="Fill"/>
+                </Grid>
+                <ListView ItemsSource="{Binding SelectedCommand}" HasUnevenRows="True" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" Margin="5,2,5,0">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label x:Name="LabelParams" 
+                                           Padding="10"
+                                           Text="{Binding Pagina}" 
+                                           FontSize="15"
+                                           TextColor="#6e2cd6"
+                                           HorizontalOptions="CenterAndExpand">
+                                    </Label>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ContentPage>
+        
+    </MasterDetailPage.Master>
+
+    <MasterDetailPage.Detail>
+ 
+        <local:HomePage/>
+
+    </MasterDetailPage.Detail>
+    
+    
+</MasterDetailPage>

@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" 
+             x:Class="Gerenciamento_OLX_App.View.ConfiguracaoPage">
+    <ContentPage.ToolbarItems>
+
+        <ToolbarItem Text="Adcionar" IconImageSource="estoque" Command="{Binding GoEstoqueCommand}"></ToolbarItem>
+        <ToolbarItem Text="Atualizar" IconImageSource="chat" Command="{Binding GoChatCommand}"></ToolbarItem>
+
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Configuração"
+                        FontSize="25"
+                        HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       FontAttributes="Bold"
+                        TextColor="#6e2cd6"                       
+                        Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
+
+                <Label Text="Pagina Inicial" TextColor="#6e2cd6"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10, 0, 0, 10"/>
+                <Entry Text="{Binding PaginaInicial}" Placeholder="https://sp.olx.com.br/regiao-de-sorocaba" Grid.Row="1" VerticalTextAlignment="End" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10, 0, 0, 10"/>
+
+                <Label Text="Pagina De mensagens" TextColor="#6e2cd6"  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10, 0, 0, 10"/>
+                <Entry Text="{Binding PaginaChat}" Placeholder="https://sp.olx.com.br/regiao-de-sorocaba" Grid.Row="2" VerticalTextAlignment="End" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10, 0, 0, 10"/>
+
+                <Image Source="fundoconfig" HorizontalOptions="Center" Grid.Row="3" Margin="0"  Grid.Column="0" Grid.ColumnSpan="2" />
+                <Label Text="Config valor" TextColor="#ffffff" FontSize="25" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" />
+                
+                <Label Text="Fechamento do Mês" TextColor="#6e2cd6"  Grid.Row="4" Grid.Column="0"  Margin="10, 0, 0, 10"/>
+                <DatePicker Date="{Binding DataFechamento}" Grid.Row="4" Grid.Column="0" VerticalOptions="End"  Margin="10, 0, 0, 10"/>
+
+                <Image Source="logoapp" HorizontalOptions="End" HeightRequest="70" Grid.Row="4" Grid.Column="1"  Margin="20"/>
+
+                <Label Text="Cota Investimento" TextColor="#6e2cd6"  Grid.Row="5" Grid.Column="0"  Margin="10, 0, 0, 10"/>
+                <Entry Text="{Binding CotaInvestimento}" Keyboard="Numeric" Placeholder="10%" Grid.Row="5" Grid.Column="0" VerticalTextAlignment="End" Grid.ColumnSpan="2"  Margin="10, 0, 0, 10"/>
+
+                <Button Text="Configurar" Command="{Binding ConfigurarCommmand}" TextColor="White" BackgroundColor="#060e68" Grid.Row="6" Grid.Column="0" CornerRadius="15" Margin="20"/>
+
+                <Button Text="Limpar" Command="{Binding LimparCommmand}" TextColor="White" BackgroundColor="#060e68" Grid.Row="6" Grid.Column="1" CornerRadius="15" Margin="20"/>
+
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

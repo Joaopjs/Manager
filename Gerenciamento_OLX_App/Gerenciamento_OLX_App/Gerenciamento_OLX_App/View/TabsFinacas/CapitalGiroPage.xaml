@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Gerenciamento_OLX_App.View.TabsFinacas.CapitalGiroPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackLayout HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+                    <Image Source="fundo"  HorizontalOptions="Center" Margin="10, 10"/>
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="0, 40">
+                    <Label Text="Capital Giro Disponivel" TextColor="#6e2cd6" FontSize="18"/>
+                    <Label Text="{Binding ValorGiro, StringFormat='R$ {0:0,0}'}" TextColor="Green" FontSize="30" HorizontalTextAlignment="Center"/>
+
+                </StackLayout>
+
+                
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="0, 170">
+                        <Frame BackgroundColor="#6e2cd6" CornerRadius="10">
+                            <StackLayout>
+                                <Entry Placeholder="0" 
+                                       Text="{Binding ValorDeposito}"
+                                       MaxLength="5"
+                                       WidthRequest="100" 
+                                       Keyboard="Numeric" 
+                                       PlaceholderColor="White" 
+                                       TextColor="White" 
+                                       HorizontalOptions="Center" 
+                                       FontSize="30"
+                                       HorizontalTextAlignment="Center"/>
+                            <Button Text="Depositar" Command="{Binding DepositarCommand}" TextColor="White" FontSize="18" BackgroundColor="Transparent"/>
+                        </StackLayout>
+                        </Frame>
+                    <Frame BackgroundColor="#6e2cd6" CornerRadius="10">
+                        <StackLayout>                            
+                            <Entry Placeholder="0"
+                                   Text="{Binding ValorSaque}"
+                                       MaxLength="5"
+                                       WidthRequest="100" 
+                                       Keyboard="Numeric" 
+                                       PlaceholderColor="White" 
+                                       TextColor="White" 
+                                       HorizontalOptions="Center" 
+                                       FontSize="30"
+                                       HorizontalTextAlignment="Center"/>
+                            <Button Text="Sacar" Command="{Binding SacarCommand}" TextColor="White" FontSize="18" BackgroundColor="Transparent"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

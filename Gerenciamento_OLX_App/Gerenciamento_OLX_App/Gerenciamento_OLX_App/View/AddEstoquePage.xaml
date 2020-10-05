@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:bh="clr-namespace:Gerenciamento_OLX_App.ViewModel.Behaviors_Estoque"
+             mc:Ignorable="d"
+             BackgroundImageSource="backestoque"
+             x:Class="Gerenciamento_OLX_App.View.AddEstoquePage">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="Cadastrar"
+                   FontSize="25"
+                   TextColor="#6e2cd6"
+                   HorizontalOptions="Center"
+                   Margin="0,25,0,20"/>
+
+                <Entry Placeholder="Nome do Produto"
+                       PlaceholderColor="Gray"
+                       Text="{Binding NomeProduto, Mode=TwoWay}"
+                       HorizontalTextAlignment="Center"
+                       HorizontalOptions="Center"
+                       Margin="0, 10"/>
+
+                <Entry Placeholder="Valor da Compra"
+                       PlaceholderColor="Gray"
+                       IsEnabled="{Binding ValorCompraVisible}"
+                       Text="{Binding ValorCompra, Mode=TwoWay}"                       
+                       Keyboard="Numeric"
+                       HorizontalTextAlignment="Center"
+                       HorizontalOptions="Center"
+                       Margin="0, 10">
+                </Entry>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+
+                    <Entry Text="Manutenção"
+                           IsReadOnly="False"
+                           TextColor="Blue"
+                           FontSize="Medium">
+                        <Entry.Triggers>
+                            <DataTrigger TargetType="Entry" Binding="{Binding Source={x:Reference EstadoSwitch}, Path=IsToggled}"
+                                 Value="true">
+                                    <Setter Property="Text"
+                                            Value="Pronto Venda" />
+                                    <Setter Property="FontSize"
+                                            Value="Medium"></Setter>
+                                    <Setter Property="TextColor"
+                                            Value="Green"></Setter>                                
+                            </DataTrigger>
+                        </Entry.Triggers>
+                        
+                        <Entry.Behaviors>
+                            <bh:EstadoBehaviors/>
+                        </Entry.Behaviors>                        
+
+                    </Entry>
+
+                    <Switch x:Name="EstadoSwitch"
+                            IsToggled="True"                            
+                            ThumbColor="#6e2cd6"
+                    />
+
+                </StackLayout>
+
+                <Entry  Placeholder="Investimento"                        
+                        PlaceholderColor="Gray"
+                        Text="{Binding ValorInvestidos, Mode=TwoWay}"
+                        Keyboard="Numeric"
+                        HorizontalTextAlignment="Center"
+                        HorizontalOptions="Center"
+                        Margin="0, 10"/>               
+                
+                <Entry Placeholder="Meta Venda"
+                   PlaceholderColor="Gray"
+                   Text="{Binding MetaVenda, Mode=TwoWay}"
+                       HorizontalTextAlignment="Center"
+                       Keyboard="Numeric"
+                   HorizontalOptions="Center"
+                   Margin="0, 10"/>
+
+                <Editor Placeholder="Observação"
+                        PlaceholderColor="Gray"
+                        WidthRequest="250"
+                        MaxLength="255"
+                        Text="{Binding Observacao, Mode=TwoWay}"                       
+                        HorizontalOptions="Center"
+                        Keyboard="Plain" AutoSize="TextChanges" 
+                        Margin="0, 10"/>                
+         
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+
+                    <ImageButton Source="salvar" 
+                                 Command="{Binding SalvarCommand}"
+                                 BackgroundColor="Transparent"
+                                 WidthRequest="80"                                 
+                                 Margin="10,5"/>
+
+                    <ImageButton Source="limpar"
+                                 Command="{Binding LimparCommand}"
+                                 BackgroundColor="Transparent"
+                                 WidthRequest="80"                                 
+                                 Margin="10,5"/>
+
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

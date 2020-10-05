@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Gerenciamento_OLX_App.View.TabsFinacas.InvestidoPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackLayout HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+                    <Image Source="fundo"  HorizontalOptions="Center" Margin="10, 10"/>
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="0, 70">
+                    <Label Text="Valor Investido em Estoque" TextColor="#6e2cd6" FontSize="23"/>
+
+                </StackLayout>
+
+                <Frame BackgroundColor="#6e2cd6" CornerRadius="10" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="0, 170">
+                    <StackLayout BackgroundColor="#6e2cd6" HorizontalOptions="Center" Margin="0, 10" Padding="15">
+                        <Label Text="{Binding Investido, StringFormat='R$ {0:0,0}'}" TextColor="White" FontSize="30"/>
+                   
+                    </StackLayout>
+                </Frame>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
